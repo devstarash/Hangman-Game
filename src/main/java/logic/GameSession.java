@@ -15,7 +15,7 @@ public class GameSession {
     public void start() {
         while (true) {
             System.out.println("Введите 'start', чтобы начать игру или 'stop' чтобы выйти из приложения");
-            String choice = SCANNER.nextLine();
+            String choice = SCANNER.nextLine().toLowerCase().trim();
             if (choice.equals("start")) {
                 play();
             } else if (choice.equals("stop")) {
@@ -42,6 +42,7 @@ public class GameSession {
                 System.out.println("Эта буква была использована.");
                 continue;
             }
+            word.registerLetter(letter);
             if (word.isCorrectGuess(letter)) {
                 System.out.println("Вы угадали букву.");
             } else {
@@ -49,7 +50,6 @@ public class GameSession {
                 System.out.println(HangmanDrawer.drawHangmanState(errors));
                 System.out.println("Ошибка. Вы не угадали букву. Осталось попыток: " + (MAX_ERRORS - errors));
             }
-            word.registerLetter(letter);
             System.out.println("Вы использовали: " + word.getUsedLetters());
         }
         if (word.isWon()) {

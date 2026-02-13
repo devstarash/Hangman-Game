@@ -20,6 +20,6 @@ public class WordReader {
 
     public String getRandomWord() {
         int position = RANDOM.nextInt(0, words.size());
-        return words.get(position);
+        return words.get(position).toLowerCase();
     }
 }
