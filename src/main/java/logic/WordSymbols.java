@@ -4,6 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class WordSymbols {
+    private static final String EMPTY_LETTER_SYMBOL = "_";
     private final String secretWord;
     private final StringBuilder guessedWord;
     private final Set<Character> usedLetters = new LinkedHashSet<>();
@@ -45,7 +46,7 @@ public class WordSymbols {
     }
 
     private void checkWin() {
-        if (guessedWord.indexOf("_") == -1) {
+        if (guessedWord.indexOf(EMPTY_LETTER_SYMBOL) == -1) {
             isWon = true;
         }
     }

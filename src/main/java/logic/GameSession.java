@@ -8,17 +8,20 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class GameSession {
-    private static final WordReader WORD_READER = new WordReader("words.txt");
+    private static final String WORDS_FILE_PATH = "words.txt";
+    private static final String COMMAND_START = "start";
+    private static final String COMMAND_STOP = "stop";
+    private static final WordReader WORD_READER = new WordReader(WORDS_FILE_PATH);
     private static final Scanner SCANNER = new Scanner(System.in, StandardCharsets.UTF_8);
     private static final int MAX_ERRORS = 6;
 
     public void start() {
         while (true) {
-            System.out.println("Введите 'start', чтобы начать игру или 'stop' чтобы выйти из приложения");
+            System.out.printf("Введите '%s', чтобы начать игру или '%s' чтобы выйти из приложения%n", COMMAND_START, COMMAND_STOP);
             String choice = SCANNER.nextLine().toLowerCase().trim();
-            if (choice.equals("start")) {
+            if (choice.equals(COMMAND_START)) {
                 play();
-            } else if (choice.equals("stop")) {
+            } else if (choice.equals(COMMAND_STOP)) {
                 break;
             } else {
                 System.out.println("Повторите выбор");
